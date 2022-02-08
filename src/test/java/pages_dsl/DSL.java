@@ -17,36 +17,36 @@ public class DSL {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
-    public void vouParaSite(){ driver.get("https://demo.guru99.com/test/newtours/"); }
-    public void preencherInformacaoDeContato(){
+    public void vouParaSite(String site){ driver.get(site); }
+    public void preencherInformacaoDeContato(String name, String sobrenome, String fone, String email){
         driver.findElement(By.linkText("REGISTER")).click();
-        driver.findElement(By.xpath("//input[@name='firstName']")).sendKeys("Pastels");
-        driver.findElement(By.xpath("//input[@name='lastName']")).sendKeys("Rick");
-        driver.findElement(By.xpath("//input[@name='phone']")).sendKeys("85999999999");
-        driver.findElement(By.id("userName")).sendKeys("test.007@gmail.com.br");
+        driver.findElement(By.xpath("//input[@name='firstName']")).sendKeys(name);
+        driver.findElement(By.xpath("//input[@name='lastName']")).sendKeys(sobrenome);
+        driver.findElement(By.xpath("//input[@name='phone']")).sendKeys(fone);
+        driver.findElement(By.id("userName")).sendKeys(email);
     }
-    public void preencherInformacoesDeCorrespondencia(){
-        driver.findElement(By.xpath("//input[@name='address1']")).sendKeys("Rua Caralho Viado!");
-        driver.findElement(By.xpath("//input[@name='city']")).sendKeys("Virgin");
-        driver.findElement(By.xpath("//input[@name='state']")).sendKeys("Marte");
-        driver.findElement(By.xpath("//input[@name='postalCode']")).sendKeys("666-6969");
+    public void preencherInformacoesDeCorrespondencia(String rua, String city, String state, String postalCode){
+        driver.findElement(By.xpath("//input[@name='address1']")).sendKeys(rua);
+        driver.findElement(By.xpath("//input[@name='city']")).sendKeys(city);
+        driver.findElement(By.xpath("//input[@name='state']")).sendKeys(state);
+        driver.findElement(By.xpath("//input[@name='postalCode']")).sendKeys(postalCode);
         WebElement country = driver.findElement(By.xpath("//select[@name='country']"));
         country.click();
         country.findElement(By.xpath("//option[@value='BRAZIL']")).click();
     }
-    public void preencherInformacoesDeUsuario(){
-        driver.findElement(By.id("email")).sendKeys("test.007@gmail.com.br");
-        driver.findElement(By.xpath("//input[@name='password']")).sendKeys("#6969888A");
-        driver.findElement(By.xpath("//input[@name='confirmPassword']")).sendKeys("#6969888A");
+    public void preencherInformacoesDeUsuario(String usuario,String senha,String confirmeSenha){
+        driver.findElement(By.id("email")).sendKeys(usuario);
+        driver.findElement(By.xpath("//input[@name='password']")).sendKeys(senha);
+        driver.findElement(By.xpath("//input[@name='confirmPassword']")).sendKeys(confirmeSenha);
     }
     public void clickEnviar(){
         driver.findElement(By.xpath("//input[@name='submit']")).click();
         List<WebElement> fonts = driver.findElements(By.tagName("font"));
-        Assert.assertEquals("Note: Your user name is test.007@gmail.com.br.", fonts.get(5).getText());
+        Assert.assertEquals("Note: Your user name is zezim01@gmail.com.", fonts.get(5).getText());
     }
-    public void preencherLoginESenha(){
-        driver.findElement(By.name("userName")).sendKeys("test.007@gmail.com.br");
-        driver.findElement(By.name("password")).sendKeys("#6969888A");
+    public void preencherLoginESenha(String usuario, String senha){
+        driver.findElement(By.name("userName")).sendKeys(usuario);
+        driver.findElement(By.name("password")).sendKeys(senha);
         driver.findElement(By.name("submit")).click();
     }
     public void confirmarLogin(){
