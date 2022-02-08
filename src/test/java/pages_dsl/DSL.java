@@ -15,8 +15,7 @@ public class DSL {
 
     public void abrirChrome(){ System.setProperty("webdriver.chrome.driver", "C:/Program Files/JetBrains/drivers/chromedriver.exe");
         driver = new ChromeDriver();
-        driver.manage().window().maximize();
-    }
+        driver.manage().window().maximize(); }
     public void vouParaSite(String site){ driver.get(site); }
     public void preencherInformacaoDeContato(String name, String sobrenome, String fone, String email){
         driver.findElement(By.linkText("REGISTER")).click();
@@ -39,19 +38,12 @@ public class DSL {
         driver.findElement(By.xpath("//input[@name='password']")).sendKeys(senha);
         driver.findElement(By.xpath("//input[@name='confirmPassword']")).sendKeys(confirmeSenha);
     }
-    public void clickEnviar(){
-        driver.findElement(By.xpath("//input[@name='submit']")).click();
+    public void clickEnviar(){ driver.findElement(By.xpath("//input[@name='submit']")).click();
         List<WebElement> fonts = driver.findElements(By.tagName("font"));
-        Assert.assertEquals("Note: Your user name is zezim01@gmail.com.", fonts.get(5).getText());
-    }
-    public void preencherLoginESenha(String usuario, String senha){
-        driver.findElement(By.name("userName")).sendKeys(usuario);
-        driver.findElement(By.name("password")).sendKeys(senha);
-        driver.findElement(By.name("submit")).click();
-    }
-    public void confirmarLogin(){
-        List<WebElement> fonts = driver.findElements(By.tagName("font"));
-        Assert.assertEquals("Thank you for Loggin.", fonts.get(3).getText());
-    }
+        Assert.assertEquals("Note: Your user name is zezim01@gmail.com.", fonts.get(5).getText()); }
+    public void preencherLoginESenha(String usuario, String senha){ driver.findElement(By.name("userName")).sendKeys(usuario);
+        driver.findElement(By.name("password")).sendKeys(senha); driver.findElement(By.name("submit")).click(); }
+    public void confirmarLogin(){ List<WebElement> fonts = driver.findElements(By.tagName("font"));
+        Assert.assertEquals("Thank you for Loggin.", fonts.get(3).getText()); }
     public void fecharBrowser(){ driver.quit(); }
 }

@@ -15,17 +15,10 @@ public class MercuryToursCadastroELoginTest {
 
     @Before
     public void inicio(){ dsl = new DSL(driver); page = new campoPage(driver); }
-
     @Test
-    public void fazerCadastro(){
-        page.irSite();
-        page.execucaoCompletaCadastro();
-    }
+    public void fazerCadastro(){ page.irSite(); page.execucaoCompletaCadastro(); }
     @Test
-    public void fazerLogin() {
-        page.irSite();
-        page.execucaoCompletaLogin();
-    }
+    public void fazerLogin() { page.irSite(); page.execucaoCompletaLogin(); }
     @After
     public void fim(){ page.finalizar(); }
 }
